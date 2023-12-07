@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="elementoSalvato"></div>
+    <form >
+        <label for="nome">Tuo Nome:</label>
+        <input type="text" id="nome" placeholder="Inserisci il tuo nome" required>
+        <button type="button" onclick="salva()">Salva in LocalStorage</button>
+        <button type="button" onclick="rimuovi()">Rimuovi valore salvato</button>
+    </form>
+    <hr>
+    <p>Contatore: <span id="counter"></span></p>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
