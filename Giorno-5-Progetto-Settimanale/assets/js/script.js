@@ -32,8 +32,10 @@ window.onload = function() {
             `;
         });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Error:', error))
+        .finally(() =>{
         hideLoadingIndicator();
+      })
         
         
         
