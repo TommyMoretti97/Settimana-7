@@ -13,7 +13,7 @@ window.onload = function() {
     fetch(url, { headers })
     .then(response => response.json())
     .then((data) => {
-        addNewProduct();
+       
         let card = document.getElementById("cards");
         card.innerHTML = "";
         data.forEach(product => {
@@ -40,29 +40,7 @@ window.onload = function() {
 }
 
 
-function addNewProduct() {
-    const newProducts = 
-    {
-        "name": "Nokia 3310",
-        "description": "Indestructible cellphone",
-        "brand": "Nokia",
-        "imageUrl": "https://m.media-amazon.com/images/I/614r6gJOBeL.jpg",
-        "price": 99
-    }
-    fetch(url, {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(newProducts),
-        
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        
-    })
-    .catch(error => console.error('Error:', error));
-    
-}
+
 
 function nascondiBottone() {
     const nascondiBottone = document.querySelector(".btn-primary");

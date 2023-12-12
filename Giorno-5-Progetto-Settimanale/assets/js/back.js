@@ -62,22 +62,28 @@ function resetProdotto() {
 }
 function setupSalvaButton() {
     const salvaButton = document.getElementById("salvaProdotto");
-    salvaButton.addEventListener("click", salvaProdotto);
+    salvaButton.addEventListener("click", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const productUrl = productId ? `${url}/${productId}` : url;
+
+        const productData = {
+            name: document.getElementById("name").value,
+            description: document.getElementById("descrizione").value,
+            brand: document.getElementById("brand").value,
+            imageUrl: document.getElementById("urlimg").value,
+            price: document.getElementById("prezzo").value,
+        };
+
+        if (productId) {
+            updateProduct(productUrl, productData);
+        } else {
+            addNewProduct(productUrl, productData);
+        }
+    });
 }
 
-function salvaProdotto() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
-    const productUrl = `${url}/${productId}`;
-
-    const updatedProduct = {
-        name: document.getElementById("name").value,
-        description: document.getElementById("descrizione").value,
-        brand: document.getElementById("brand").value,
-        imageUrl: document.getElementById("urlimg").value,
-        price: document.getElementById("prezzo").value,
-    };
-
+function updateProduct(productUrl, updatedProduct) {
     fetch(productUrl, {
         method: 'PUT',
         headers: headers,
@@ -85,9 +91,24 @@ function salvaProdotto() {
     })
     .then(response => response.json())
     .then(data => {
-        
         console.log(data);
+        // Handle the updated product as needed
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function addNewProduct(productUrl, newProduct) {
+    fetch(productUrl, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(newProduct),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+      
         
     })
     .catch(error => console.error('Error:', error));
 }
+
