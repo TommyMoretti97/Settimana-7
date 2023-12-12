@@ -92,7 +92,7 @@ function updateProduct(productUrl, updatedProduct) {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        // Handle the updated product as needed
+       
     })
     .catch(error => console.error('Error:', error));
 }

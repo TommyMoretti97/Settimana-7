@@ -11,7 +11,7 @@ function popolaDetailPage() {
     const productUrl = `${url}/${productId}`;
 
     fetch(productUrl, {
-        method: 'GET',  // Cambiato da 'PUT' a 'GET'
+        method: 'GET',  
         headers: headers,
     })
     .then(response => response.json())
@@ -19,9 +19,8 @@ function popolaDetailPage() {
         const imgDettagli = document.getElementById("imgDettagli");
         const descrizioneDettagli = document.getElementById("descrizioneDettagli");
 
-        // Assicurati che gli elementi HTML siano presenti
         if (imgDettagli && descrizioneDettagli) {
-            // Usa innerHTML o innerText per impostare il contenuto
+            
             imgDettagli.innerHTML = `<img src="${product.imageUrl}" class="img-fluid" alt="Product Image">`;
             descrizioneDettagli.innerHTML = ` ${product.brand} <div class="h3"> ${product.name}</div> <div class="bg-dark text-warning w-25"> Prezzo: ${product.price} $</div> <div > Descrizione: ${product.description} </div> `;
         }
